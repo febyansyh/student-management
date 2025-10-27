@@ -2,19 +2,19 @@ package com.example.studentmanagement;
 
 public class Student {
     private String nim;
-    private String nama;
-    private String tanggalLahir;
-    private String alamat;
+    private String fullName;
+    private String dob;
+    private String address;
 
     // Constructor kosong (wajib untuk Spring)
     public Student() {}
 
     // Constructor lengkap (optional)
-    public Student(String nim, String nama, String tanggalLahir, String alamat) {
+    public Student(String nim, String fullName, String dob, String address) {
         this.nim = nim;
-        this.nama = nama;
-        this.tanggalLahir = tanggalLahir;
-        this.alamat = alamat;
+        this.fullName = fullName;
+        this.dob = dob;
+        this.address = address;
     }
 
     // Getter dan Setter
@@ -26,27 +26,27 @@ public class Student {
         this.nim = nim;
     }
 
-    public String getNama() {
-        return nama;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getTanggalLahir() {
-        return tanggalLahir;
+    public String getDob() {
+        return dob;
     }
 
-    public void setTanggalLahir(String tanggalLahir) {
-        this.tanggalLahir = tanggalLahir;
+    public void setDob(String dob) {
+        this.dob = dob;
     }
 
-    public String getAlamat() {
-        return alamat;
+    public String getAddress() {
+        return address;
     }
 
-    public void setAlamat(String alamat) {
-        this.alamat = alamat;
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
