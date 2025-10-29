@@ -1,23 +1,25 @@
-package com.example.studentmanagement;
+package com.example.studentmanagement.domain;
+
+import java.time.LocalDate;
 
 public class Student {
     private String nim;
     private String fullName;
-    private String dob;
+    private LocalDate dob;
     private String address;
 
-    // Constructor kosong (wajib untuk Spring)
+    
     public Student() {}
 
-    // Constructor lengkap (optional)
-    public Student(String nim, String fullName, String dob, String address) {
+    
+    public Student(String nim, String fullName, LocalDate dob, String address) {
         this.nim = nim;
         this.fullName = fullName;
         this.dob = dob;
         this.address = address;
     }
 
-    // Getter dan Setter
+    
     public String getNim() {
         return nim;
     }
@@ -34,11 +36,11 @@ public class Student {
         this.fullName = fullName;
     }
 
-    public String getDob() {
+    public LocalDate getDob() {
         return dob;
     }
 
-    public void setDob(String dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
