@@ -30,9 +30,28 @@ public class StudentController {
         return studentService.getStudents();
     }
 
+    
+    @GetMapping("/{nim}")
+    public Object getStudentByNim(@PathVariable String nim) {
+        try {
+            return studentService.findStudentByNim(nim);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
+    }
+
     @PostMapping
     public Student createStudent(@RequestBody StudentRequest studentRequest) {
         return studentService.addStudent(studentRequest);
+    }
+
+    @PutMapping("/{nim}")
+    public Object updateStudent(@PathVariable String nim, @RequestBody StudentRequest request) {
+        try {
+            return studentService.updateStudent(nim, request);
+        } catch (Exception e) {
+            return e.getMessage();
+        }
     }
 
     @DeleteMapping("/{nim}")
@@ -40,16 +59,6 @@ public class StudentController {
         try {
             studentService.deleteStudent(nim);
             return "Successfully deleted";
-        } catch (Exception e) {
-            return e.getMessage();
-        }
-    }
-
-    
-    @PutMapping("/{nim}")
-    public Object updateStudent(@PathVariable String nim, @RequestBody StudentRequest request) {
-        try {
-            return studentService.updateStudent(nim, request);
         } catch (Exception e) {
             return e.getMessage();
         }

@@ -35,21 +35,20 @@ public class StudentService {
         return String.format("%0" + LENGTH + "d", maxId);
     }
 
-    
-    public void deleteStudent(String nim) {
+ 
+    public Student findStudentByNim(String nim) {
         Optional<Student> studentOptional = students.stream()
                 .filter(student -> student.getNim().equals(nim))
                 .findFirst();
 
         if (studentOptional.isPresent()) {
-            Student studentToBeDeleted = studentOptional.get();
-            students.remove(studentToBeDeleted);
+            return studentOptional.get();
         } else {
             throw new RuntimeException("Student with NIM " + nim + " not found");
         }
     }
 
-  
+    
     public Student updateStudent(String nim, StudentRequest request) {
         Optional<Student> studentOptional = students.stream()
                 .filter(student -> student.getNim().equals(nim))
@@ -61,6 +60,19 @@ public class StudentService {
             studentToUpdate.setDob(request.getDob());
             studentToUpdate.setAddress(request.getAddress());
             return studentToUpdate;
+        } else {
+            throw new RuntimeException("Student with NIM " + nim + " not found");
+        }
+    }
+
+   
+    public void deleteStudent(String nim) {
+        Optional<Student> studentOptional = students.stream()
+                .filter(student -> student.getNim().equals(nim))
+                .findFirst();
+
+        if (studentOptional.isPresent()) {
+            students.remove(studentOptional.get());
         } else {
             throw new RuntimeException("Student with NIM " + nim + " not found");
         }
