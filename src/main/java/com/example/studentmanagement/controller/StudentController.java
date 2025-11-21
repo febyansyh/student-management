@@ -15,29 +15,23 @@ import com.example.studentmanagement.domain.Student;
 import com.example.studentmanagement.domain.StudentRequest;
 import com.example.studentmanagement.service.StudentService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/students")
+@RequiredArgsConstructor
 public class StudentController {
 
     private final StudentService studentService;
-
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
     }
 
-    
     @GetMapping("/{nim}")
-    public Object getStudentByNim(@PathVariable String nim) {
-        try {
-            return studentService.findStudentByNim(nim);
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+    public Student getStudentByNim(@PathVariable String nim) {
+        return studentService.findStudentByNim(nim);
     }
 
     @PostMapping
@@ -46,21 +40,13 @@ public class StudentController {
     }
 
     @PutMapping("/{nim}")
-    public Object updateStudent(@PathVariable String nim, @RequestBody StudentRequest request) {
-        try {
-            return studentService.updateStudent(nim, request);
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+    public Student updateStudent(@PathVariable String nim, @RequestBody StudentRequest request) {
+        return studentService.updateStudent(nim, request);
     }
 
     @DeleteMapping("/{nim}")
     public String removeStudent(@PathVariable String nim) {
-        try {
-            studentService.deleteStudent(nim);
-            return "Successfully deleted";
-        } catch (Exception e) {
-            return e.getMessage();
-        }
+        studentService.deleteStudent(nim);
+        return "Student deleted successfully!";
     }
 }

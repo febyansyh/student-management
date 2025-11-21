@@ -2,43 +2,21 @@ package com.example.studentmanagement.domain;
 
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class StudentRequest {
+
     private String fullName;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate dob;
+
     private String address;
-
-   
-    public StudentRequest() {}
-
-    
-    public StudentRequest(String fullName, LocalDate dob, String address) {
-        this.fullName = fullName;
-        this.dob = dob;
-        this.address = address;
-    }
-
-  
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
 }
