@@ -24,26 +24,31 @@ public class StudentController {
 
     private final StudentService studentService;
 
+   
     @GetMapping
     public List<Student> getStudents() {
         return studentService.getStudents();
     }
 
+    
     @GetMapping("/{nim}")
     public Student getStudentByNim(@PathVariable String nim) {
         return studentService.findStudentByNim(nim);
     }
 
+    
     @PostMapping
     public Student createStudent(@RequestBody StudentRequest studentRequest) {
         return studentService.addStudent(studentRequest);
     }
 
+    
     @PutMapping("/{nim}")
     public Student updateStudent(@PathVariable String nim, @RequestBody StudentRequest request) {
         return studentService.updateStudent(nim, request);
     }
 
+    
     @DeleteMapping("/{nim}")
     public String removeStudent(@PathVariable String nim) {
         studentService.deleteStudent(nim);
